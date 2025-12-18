@@ -6,11 +6,12 @@ interface SeatMapProps {
     venue: Venue;
     selectedSeats: SelectedSeatInfo[];
     canSelectMore: boolean;
+    showHeatMap: boolean;
     onSeatToggle: (seat: SelectedSeatInfo) => void;
     onSeatFocus: (seat: SelectedSeatInfo | null) => void;
 }
 
-export function SeatMap({ venue, selectedSeats, canSelectMore, onSeatToggle, onSeatFocus }: SeatMapProps) {
+export function SeatMap({ venue, selectedSeats, canSelectMore, showHeatMap, onSeatToggle, onSeatFocus }: SeatMapProps) {
     const viewBox = `0 0 ${venue.map.width} ${venue.map.height}`;
 
     const selectedSeatIds = useMemo(
@@ -64,6 +65,7 @@ export function SeatMap({ venue, selectedSeats, canSelectMore, onSeatToggle, onS
                                     rowIndex={row.index}
                                     isSelected={selectedSeatIds.has(seat.id)}
                                     canSelect={canSelectMore}
+                                    showHeatMap={showHeatMap}
                                     onSeatClick={handleSeatClick}
                                     onSeatFocus={handleSeatFocus}
                                 />

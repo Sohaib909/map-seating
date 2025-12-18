@@ -42,6 +42,21 @@ export function useSeatSelection() {
         setSelectedSeats([]);
     }, []);
 
+    const selectMultipleSeats = useCallback((seats: SelectedSeatInfo[]) => {
+        setSelectedSeats((current) => {
+            const newSeats = [...current];
+
+            for (const seat of seats) {
+                const alreadySelected = newSeats.some((s) => s.id === seat.id);
+                if (!alreadySelected && newSeats.length < MAX_SEATS) {
+                    newSeats.push(seat);
+                }
+            }
+
+            return newSeats;
+        });
+    }, []);
+
     const isSelected = useCallback(
         (seatId: string) => selectedSeats.some((s) => s.id === seatId),
         [selectedSeats]
@@ -51,6 +66,7 @@ export function useSeatSelection() {
         selectedSeats,
         toggleSeat,
         clearSelection,
+        selectMultipleSeats,
         isSelected,
         canSelectMore: selectedSeats.length < MAX_SEATS,
         maxSeats: MAX_SEATS,

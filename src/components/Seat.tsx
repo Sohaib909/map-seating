@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import type { Seat as SeatType } from '../types';
-import { SEAT_COLORS } from '../constants';
+import { SEAT_COLORS, PRICE_TIER_COLORS } from '../constants';
 
 interface SeatProps {
     seat: SeatType;
@@ -9,6 +9,7 @@ interface SeatProps {
     rowIndex: number;
     isSelected: boolean;
     canSelect: boolean;
+    showHeatMap?: boolean;
     onSeatClick: (seat: SeatType, sectionId: string, sectionLabel: string, rowIndex: number) => void;
     onSeatFocus: (seat: SeatType, sectionId: string, sectionLabel: string, rowIndex: number) => void;
 }
@@ -20,6 +21,7 @@ export const Seat = memo(function Seat({
     rowIndex,
     isSelected,
     canSelect,
+    showHeatMap,
     onSeatClick,
     onSeatFocus,
 }: SeatProps) {
@@ -28,6 +30,9 @@ export const Seat = memo(function Seat({
 
     const getColor = () => {
         if (isSelected) return SEAT_COLORS.selected;
+        if (showHeatMap) {
+            return PRICE_TIER_COLORS[seat.priceTier] || '#6b7280';
+        }
         return SEAT_COLORS[seat.status];
     };
 

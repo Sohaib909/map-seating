@@ -11,3 +11,9 @@ export const SEAT_COLORS = {
     held: '#8b5cf6',
     selected: '#3b82f6',
 } as const;
+
+export const PRICE_TIER_COLORS: Record<number, string> = {
+    1: '#ef4444', // Red - Most expensive
+    2: '#f59e0b', // Amber - Mid-range
+    3: '#10b981', // Green - Budget friendly
+};
