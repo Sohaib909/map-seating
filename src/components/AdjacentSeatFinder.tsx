@@ -87,7 +87,7 @@ export function AdjacentSeatFinder({ venue, selectedSeats, maxSeats, onSelectSea
                         <button
                             onClick={handleSearch}
                             disabled={remainingCapacity < 2}
-                            className="px-4 py-2 bg-blue-500 text-white rounded-md font-medium hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors focus:outline focus:outline-2 focus:outline-blue-500 focus:outline-offset-2"
+                            className="px-4 py-2 bg-green-500 text-white rounded-md font-medium hover:bg-green-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors focus:outline focus:outline-2 focus:outline-green-500 focus:outline-offset-2"
                             aria-label={`Search for ${seatCount} adjacent seats`}
                         >
                             Search

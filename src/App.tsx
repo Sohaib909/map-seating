@@ -33,7 +33,7 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <header className="bg-white px-4 py-4 sm:px-6 sm:py-6 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 m-0">{venue.name}</h1>
+        <h1 className="text-2xl sm:text-3xl font-semibold text-green-600 m-0">{venue.name}</h1>
         <div className="flex items-center gap-4">
           <button
             onClick={() => setShowHeatMap(!showHeatMap)}
