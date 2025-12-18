@@ -1,0 +1,15 @@
+{
+    "root": [
+        "./src/hooks/useseatselection.test.ts",
+        "./src/hooks/usevenue.test.ts",
+        "./src/app.test.tsx",
+        "./src/components/legend.test.tsx",
+        "./src/components/seat.test.tsx",
+        "./src/components/seatdetails.test.tsx",
+        "./src/components/selectionsummary.test.tsx",
+        "./src/test/setup.ts",
+        "./src/test/vitest.d.ts"
+    ],
+    "errors": true,
+    "version": "5.9.3"
+}

@@ -7,7 +7,7 @@ export function useVenue() {
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
-        fetch('/venue.json')
+        fetch('/venue-large.json')
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Failed to load venue data');

@@ -65,13 +65,14 @@ The application will start at `http://localhost:5173`
 ✅ Load and render venue data from JSON  
 ✅ Smooth 60fps performance with 15,000+ seats  
 ✅ Click and keyboard seat selection  
-✅ Display seat details on focus/click  
+✅ Display seat details on hover/focus/click  
 ✅ Max 8 seat selection with live subtotal  
 ✅ localStorage persistence  
 ✅ Full keyboard navigation and ARIA labels  
 ✅ Responsive design (desktop + mobile)  
 ✅ Visual legend for seat statuses  
-✅ Clear selection functionality
+✅ Clear selection functionality  
+✅ Comprehensive unit tests (41 test cases)
 
 ## Incomplete Features / TODOs
 
@@ -81,7 +82,6 @@ The application will start at `http://localhost:5173`
 - **Touch gestures**: Pinch-zoom and pan for mobile (could use a library like `use-gesture`)
 - **Dark mode**: Color scheme variables are ready, needs theme toggle and dark palette
 - **E2E tests**: Playwright tests for critical user flows
-- **Unit tests**: Component and hook testing with Vitest
 
 ## Project Structure
 
@@ -108,14 +108,59 @@ public/
 
 ## Running Tests
 
-No tests are currently implemented. To add testing:
+The project includes comprehensive test coverage using Vitest and React Testing Library.
 
+### Run all tests
 ```bash
-pnpm add -D vitest @testing-library/react @testing-library/user-event
+npm test
+# or
+pnpm test
 ```
 
-For E2E tests with Playwright:
-
+### Run tests in watch mode
 ```bash
-pnpm create playwright
+npm test -- --watch
+# or
+pnpm test -- --watch
+```
+
+### Run tests with coverage
+```bash
+npm run test:coverage
+# or
+pnpm test:coverage
+```
+
+### Test Coverage
+
+- **41 test cases** covering all major functionality
+- **7 test suites** for components and hooks
+
+**Hooks:**
+- `useSeatSelection.test.ts` - Selection state management, localStorage persistence, max seats limit
+- `useVenue.test.ts` - Data fetching, loading states, error handling
+
+**Components:**
+- `Seat.test.tsx` - Click/keyboard interaction, ARIA attributes, seat states
+- `SeatDetails.test.tsx` - Seat information display, price tiers, empty state
+- `SelectionSummary.test.tsx` - Selection list, subtotal calculation, clear functionality
+- `Legend.test.tsx` - Status indicators rendering
+- `App.test.tsx` - Integration tests, loading/error states, initial render
+
+All tests verify:
+- ✅ Functionality and user interactions
+- ✅ Keyboard navigation and accessibility
+- ✅ ARIA attributes and semantic HTML
+- ✅ State management and side effects
+- ✅ Error handling
+
+## Performance Testing
+
+To verify 60fps performance with 15,000 seats, see **[PERFORMANCE_TESTING.md](PERFORMANCE_TESTING.md)**.
+
+Quick test:
+```bash
+npm run generate:large-venue  # Generate 15,000 seat venue
+# Then update useVenue.ts to use '/venue-large.json'
+npm run dev
 ```
