@@ -45,10 +45,10 @@ export function SeatMap({ venue, selectedSeats, canSelectMore, onSeatToggle, onS
     );
 
     return (
-        <div className="seat-map-container">
+        <div className="w-full h-full min-h-[300px] sm:min-h-[400px] lg:min-h-[500px]">
             <svg
                 viewBox={viewBox}
-                className="seat-map-svg"
+                className="w-full h-auto block [&_circle]:transition-all [&_circle]:duration-200 [&_circle:focus]:outline [&_circle:focus]:outline-2 [&_circle:focus]:outline-blue-500 [&_circle:focus]:outline-offset-2"
                 aria-label={`Seating map for ${venue.name}`}
                 role="application"
             >
